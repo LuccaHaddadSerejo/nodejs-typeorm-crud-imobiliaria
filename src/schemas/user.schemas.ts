@@ -1,11 +1,11 @@
-import { number, z } from "zod";
+import { z } from "zod";
 
 const completeUserSchema = z.object({
-  id: number(),
+  id: z.number(),
   name: z.string().max(45),
   email: z.string().email(),
   password: z.string(),
-  admin: z.boolean().nullish(),
+  admin: z.boolean().optional(),
   createdAt: z.string(),
   updatedAt: z.string(),
   deletedAt: z.string().nullish(),

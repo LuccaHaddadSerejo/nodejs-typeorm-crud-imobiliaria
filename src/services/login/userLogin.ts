@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
 import { Repository } from "typeorm";
-import { iLoginReq } from "../../interfaces/login.interface";
+import { iLoginReq } from "../../interfaces/login.interfaces";
 
 const loginService = async (data: iLoginReq): Promise<string> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);

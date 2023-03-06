@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
-import { iReturnUser, tUpdateUser } from "../../interfaces/user.interface";
+import { iReturnUser, tUpdateUser } from "../../interfaces/user.interfaces";
 import { returnUserSchema } from "../../schemas";
 
 const registerUserService = async (

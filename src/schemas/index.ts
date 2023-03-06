@@ -6,6 +6,11 @@ import {
   multipleUsersSchema,
   returnMultipleUsersSchema,
 } from "./user.schemas";
+import {
+  reqCategorySchema,
+  completeCategorySchema,
+  multipleCategoriesSchema,
+} from "./category.schema";
 
 export {
   loginSchema,
@@ -14,4 +19,7 @@ export {
   returnUserSchema,
   multipleUsersSchema,
   returnMultipleUsersSchema,
+  completeCategorySchema,
+  reqCategorySchema,
+  multipleCategoriesSchema,
 };

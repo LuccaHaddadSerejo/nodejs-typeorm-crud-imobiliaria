@@ -4,7 +4,7 @@ import {
   getAllUsersController,
   registerUserController,
   updateUserController,
-} from "../controllers/user.controller";
+} from "../controllers/user.controllers";
 import {
   checkUniqueEmail,
   checkAdminStatus,
@@ -46,7 +46,6 @@ userRouters.delete(
   "/:id",
   checkIfTokenIsValid,
   checkIfUserExists,
-  checkAdminStatus,
   deleteUserController
 );
 
