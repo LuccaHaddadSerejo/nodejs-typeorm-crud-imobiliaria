@@ -4,6 +4,7 @@ import {
   reqUserSchema,
   returnUserSchema,
   multipleUsersSchema,
+  returnMultipleUsersSchema,
 } from "./user.schemas";
 
 export {
@@ -12,4 +13,5 @@ export {
   reqUserSchema,
   returnUserSchema,
   multipleUsersSchema,
+  returnMultipleUsersSchema,
 };

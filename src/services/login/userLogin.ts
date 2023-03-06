@@ -5,15 +5,16 @@ import jwt from "jsonwebtoken";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
 import { Repository } from "typeorm";
+import { iLoginReq } from "../../interfaces/login.interface";
 
-const loginService = async (data: any): Promise<string> => {
+const loginService = async (data: iLoginReq): Promise<string> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const foundUser: User | null = await userRepository.findOneBy({
     email: data.email,
   });
 
   if (!foundUser) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const checkPassword: boolean = await compare(
@@ -22,7 +23,7 @@ const loginService = async (data: any): Promise<string> => {
   );
 
   if (!checkPassword) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const token: string = jwt.sign(
@@ -31,7 +32,7 @@ const loginService = async (data: any): Promise<string> => {
     },
     process.env.SECRET_KEY!,
     {
-      expiresIn: "24h",
+      expiresIn: process.env.EXPIRES_IN,
       subject: foundUser.id + "",
     }
   );

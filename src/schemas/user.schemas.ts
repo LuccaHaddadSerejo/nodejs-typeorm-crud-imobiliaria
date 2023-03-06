@@ -1,17 +1,14 @@
-import { hashSync } from "bcryptjs";
 import { number, z } from "zod";
 
 const completeUserSchema = z.object({
   id: number(),
-  name: z.string(),
+  name: z.string().max(45),
   email: z.string().email(),
-  password: z.string().transform((password) => {
-    return hashSync(password, 10);
-  }),
-  admin: z.boolean().optional(),
-  createdAt: z.date(),
-  updatedAt: z.date(),
-  deletedAt: z.date().nullable(),
+  password: z.string(),
+  admin: z.boolean().nullish(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  deletedAt: z.string().nullish(),
 });
 
 const reqUserSchema = completeUserSchema.omit({
@@ -21,13 +18,25 @@ const reqUserSchema = completeUserSchema.omit({
   deletedAt: true,
 });
 
+const updateUserSchema = reqUserSchema
+  .omit({
+    admin: true,
+  })
+  .partial();
+
 const returnUserSchema = completeUserSchema.omit({ password: true });
 
 const multipleUsersSchema = reqUserSchema.array();
+
+const returnMultipleUsersSchema = completeUserSchema
+  .omit({ password: true })
+  .array();
 
 export {
   completeUserSchema,
   reqUserSchema,
   returnUserSchema,
   multipleUsersSchema,
+  updateUserSchema,
+  returnMultipleUsersSchema,
 };
