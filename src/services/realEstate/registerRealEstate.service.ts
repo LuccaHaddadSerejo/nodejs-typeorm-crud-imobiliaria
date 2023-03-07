@@ -6,7 +6,7 @@ import {
   iCompleteRealEstate,
   iReqRealEstate,
 } from "../../interfaces/realEstates.interfaces";
-import { returnRealEstateSchema } from "../../schemas";
+import { returnRealEstateSchema } from "../../schemas/realEstate.schemas";
 
 const registerRealEstate = async (
   data: iReqRealEstate
@@ -48,7 +48,6 @@ const registerRealEstate = async (
   });
 
   await realEstateRepository.save(realEstate);
-  console.log(realEstate);
 
   const newRealEstate = returnRealEstateSchema.parse(realEstate);
 

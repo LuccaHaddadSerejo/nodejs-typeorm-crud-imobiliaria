@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { reqAddressSchema, completeAddressSchema } from "./address.schemas";
-import { reqCategorySchema } from "./category.schemas";
+import { completeCategorySchema } from "./category.schemas";
 
 const completeRealEstateSchema = z.object({
   id: z.number(),
@@ -24,12 +24,14 @@ const reqRealEstateSchema = completeRealEstateSchema
     address: reqAddressSchema,
   });
 
-const returnRealEstateSchema = completeRealEstateSchema.extend({
-  categoryId: reqCategorySchema,
-});
+const returnRealEstateSchema = completeRealEstateSchema
+  .omit({ categoryId: true })
+  .extend({
+    category: completeCategorySchema,
+  });
 
 const multipleRealEstatesSchema = returnRealEstateSchema
-  .omit({ categoryId: true })
+  .omit({ category: true })
   .array();
 
 export {

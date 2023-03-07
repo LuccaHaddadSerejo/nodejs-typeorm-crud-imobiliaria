@@ -38,7 +38,7 @@ class RealEstate {
   @ManyToOne(() => Category, (category) => category.realEstate, {
     nullable: true,
   })
-  category?: Category | null | undefined;
+  category: Category | null | undefined;
 }
 
 export { RealEstate };
