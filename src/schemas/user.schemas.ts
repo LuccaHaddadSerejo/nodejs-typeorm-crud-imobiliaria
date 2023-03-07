@@ -5,7 +5,7 @@ const completeUserSchema = z.object({
   name: z.string().max(45),
   email: z.string().email(),
   password: z.string(),
-  admin: z.boolean().optional(),
+  admin: z.boolean().optional().default(false),
   createdAt: z.string(),
   updatedAt: z.string(),
   deletedAt: z.string().nullish(),

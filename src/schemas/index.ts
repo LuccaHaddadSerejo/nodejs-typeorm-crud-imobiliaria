@@ -1,4 +1,4 @@
-import loginSchema from "./login.schema";
+import loginSchema from "./login.schemas";
 import {
   completeUserSchema,
   reqUserSchema,
@@ -10,7 +10,14 @@ import {
   reqCategorySchema,
   completeCategorySchema,
   multipleCategoriesSchema,
-} from "./category.schema";
+} from "./category.schemas";
+import { reqAddressSchema, completeAddressSchema } from "./address.schemas";
+import {
+  reqRealEstateSchema,
+  completeRealEstateSchema,
+  returnRealEstateSchema,
+  multipleRealEstatesSchema,
+} from "./realEstate.schemas";
 
 export {
   loginSchema,
@@ -22,4 +29,10 @@ export {
   completeCategorySchema,
   reqCategorySchema,
   multipleCategoriesSchema,
+  reqAddressSchema,
+  completeAddressSchema,
+  reqRealEstateSchema,
+  completeRealEstateSchema,
+  returnRealEstateSchema,
+  multipleRealEstatesSchema,
 };

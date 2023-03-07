@@ -16,8 +16,8 @@ class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column({ default: false })
-  sold: boolean;
+  @Column({ type: "boolean", default: false })
+  sold: boolean | undefined;
 
   @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
   value: number | string;
@@ -33,12 +33,12 @@ class RealEstate {
 
   @OneToOne(() => Address)
   @JoinColumn()
-  adress: Address;
+  address: Address;
 
   @ManyToOne(() => Category, (category) => category.realEstate, {
     nullable: true,
   })
-  category: Category | undefined | null;
+  category?: Category | null | undefined;
 }
 
 export { RealEstate };

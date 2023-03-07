@@ -22,7 +22,7 @@ class User {
   email: string;
 
   @Column({ type: "boolean", default: false })
-  admin: boolean | undefined;
+  admin: boolean;
 
   @Column({ length: 120 })
   password: string;
@@ -34,7 +34,7 @@ class User {
   updatedAt: string;
 
   @DeleteDateColumn({ type: "date", nullable: true })
-  deletedAt?: string | undefined | null;
+  deletedAt?: string;
 
   @BeforeInsert()
   @BeforeUpdate()
