@@ -18,6 +18,7 @@ import {
   returnRealEstateSchema,
   multipleRealEstatesSchema,
 } from "./realEstate.schemas";
+import { completeScheduleSchema, reqScheduleSchema } from "./schedule.schemas";
 
 export {
   loginSchema,
@@ -35,4 +36,6 @@ export {
   completeRealEstateSchema,
   returnRealEstateSchema,
   multipleRealEstatesSchema,
+  completeScheduleSchema,
+  reqScheduleSchema,
 };
